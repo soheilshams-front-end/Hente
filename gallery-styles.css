@@ -1,0 +1,201 @@
+/* استایل‌های عمومی گالری */
+.gallery-page-container {
+    padding-top: 80px; /* برای جلوگیری از همپوشانی با هدر ثابت */
+    padding-bottom: 50px;
+    background-color: #ffffff; /* پس‌زمینه روشن */
+    font-family: 'Vazirmatn', sans-serif;
+    color: #1a1a1a;
+    text-align: right;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 50px;
+}
+
+.gallery-title {
+    font-size: 55px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.gallery-subtitle {
+    font-size: 20px;
+    color: #555;
+    margin-top: 15px;
+}
+
+/* استایل دکمه‌های فیلتر (اختیاری) */
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 40px;
+    direction: rtl; /* برای RTL */
+}
+
+.filter-btn {
+    background-color: #e9e9e9;
+    color: #333;
+    border: none;
+    padding: 10px 25px;
+    margin: 0 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.filter-btn:hover {
+    background-color: #ddd;
+}
+
+.filter-btn.active {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* ساختار گرید گالری پیشرفته */
+.gallery-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* واکنش‌گرا با حداقل عرض 280px */
+    grid-auto-rows: minmax(250px, auto); /* حداقل ارتفاع ردیف برای چیدمان بهتر */
+    gap: 15px;
+    padding: 0 5vw; /* استفاده از viewport width برای padding */
+    justify-content: center;
+    align-content: start; /* برای شروع چیدمان از بالا */
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #fff;
+    display: flex; /* برای چیدمان داخلی overlay */
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03) translateY(-5px); /* افکت بزرگ شدن و کمی بالا رفتن */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease; /* انیمیشن برای تصویر داخل آیتم */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); /* بزرگ شدن تصویر هنگام هاور */
+}
+
+/* استایل‌های برای چیدمان نامنظم (Masonry-like) */
+.item-large {
+    grid-column: span 2; /* دو ستون را اشغال کند */
+    grid-row: span 2; /* دو ردیف را اشغال کند */
+}
+
+.item-wide {
+    grid-column: span 2; /* دو ستون را اشغال کند */
+}
+
+.item-tall {
+    grid-row: span 2; /* دو ردیف را اشغال کند */
+}
+
+/* Overlay و متن روی تصویر */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 123, 255, 0.7); /* پس‌زمینه آبی با شفافیت */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* در حالت عادی مخفی است */
+    transition: opacity 0.4s ease;
+    padding: 20px;
+    text-align: center;
+    flex-direction: column; /* برای متن */
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1; /* در هنگام هاور نمایش داده شود */
+}
+
+.overlay p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* انیمیشن فیلتر (اختیاری) */
+/* آیتم‌های مخفی */
+.gallery-item.hidden {
+    display: none !important; /* این کد باعث حذف کامل آیتم از صفحه و چیدمان می‌شود */
+}
+/* رسپانسیو بودن */
+@media (max-width: 768px) {
+    .gallery-showcase {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 0 20px;
+    }
+    .item-large, .item-wide, .item-tall {
+        grid-column: span 1; /* در موبایل همه آیتم‌ها تک ستونی می‌شوند */
+        grid-row: span 1;
+    }
+    .gallery-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-showcase {
+        grid-template-columns: 1fr; /* در حالت موبایل فقط یک ستون داشته باشیم */
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .gallery-header {
+        padding-top: 20px;
+    }
+    
+    .gallery-title {
+        font-size: 36px;
+    }
+
+    /*
+      مهم: در حالت موبایل، کلاس‌های item-large, item-wide و item-tall 
+      به صورت خودکار غیرفعال می‌شوند و هر آیتم یک ستون را اشغال می‌کند.
+    */
+    .item-large, .item-wide, .item-tall {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .filter-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .filter-btn {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
