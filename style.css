@@ -950,7 +950,10 @@ height: 54px;
         box-sizing: border-box;
         overflow-x: hidden;
         text-align: center; /* وسط‌چین متن برای موبایل */
+        margin-bottom: 2rem;
+        margin-left: 1rem;
     }
+
 
     .hero-content,
     .secondary-hero-content,
@@ -970,6 +973,7 @@ height: 54px;
         width: 100%;
         max-width: 100%;
         margin: 20px 0 0 0; /* فقط margin عمودی */
+        margin-bottom: 2rem;
     }
 
     .hero-image,
@@ -982,12 +986,14 @@ height: 54px;
         margin: 0 auto;
     }
 
+
     .final-logos-container {
         margin: 20px 0 0 0;
         width: 100%;
         justify-content: center;
-        gap: 10px; /* کاهش فاصله */
+        gap: 46px; /* کاهش فاصله */
         flex-wrap: wrap; /* اگر لازم، به خط بعدی بره */
+        margin-top: 2rem;
     }
 
     .services-cards-container {
@@ -1008,7 +1014,7 @@ height: 54px;
         margin: 0 auto 20px auto; /* وسط‌چین */
     }
 
-    .footer-container {
+ .footer-container {
         flex-direction: column;
         align-items: center;
         gap: 20px;
@@ -1018,7 +1024,30 @@ height: 54px;
         width: 100%;
         text-align: center;
     }
+
+    .hero-image{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .hero-section{
+        margin-bottom: 5.4rem;
+    }
+
+    .tertiary-content{
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .tertiary-image{
+        margin-top: 3rem;
+    }
+
+    .final-logos-container{
+        margin-bottom: 2rem;
+    }
+
 }
+
 
 
 @media (max-width: 412px){
@@ -1028,4 +1057,83 @@ height: 54px;
         margin: 0;
         padding: 20px;
     }
+}
+
+
+
+
+
+a, button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ۲. تعریف استایل فوکوس سفارشی برای تمام لینک ها و دکمه ها */
+a:focus, button:focus {
+    /* حذف حلقه آبی پیش فرض */
+    outline: none;
+
+    /* اضافه کردن یک سایه زیبا و ملایم به عنوان جایگزین */
+   
+    
+    /* اختیاری: هماهنگ کردن گوشه های سایه با عنصر */
+    /* border-radius: 8px; */
+}
+
+
+/* 🎨 دکمه‌ها مدرن */
+button,
+.hero-cta-button,
+.secondary-hero-cta-button,
+.tertiary-cta-button,
+.header-cta {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff !important;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transition: 300ms all;
+}
+
+button:hover,
+.hero-cta-button:hover,
+.secondary-hero-cta-button:hover,
+.tertiary-cta-button:hover,
+.header-cta:hover {
+  transform: translateY(-4px) scale(1.05);
+
+  
+  
+}
+
+
+/* متن‌های گرادینتی */
+.gradient-text {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* برای مرورگرهای جدید */
+  color: transparent;
+}
+
+.gradient-icon {
+  width: 48px;
+  height: 48px;
+
+  /* رنگ گرادینت */
+  background: linear-gradient(45deg, #ff7e5f, #feb47b);
+
+  /* استفاده از SVG به عنوان mask */
+  -webkit-mask: url(#) no-repeat center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask: url(#) no-repeat center;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+
+  /* فقط برای نمایش پس‌زمینه گرادینت از mask */
+  display: inline-block;
 }
